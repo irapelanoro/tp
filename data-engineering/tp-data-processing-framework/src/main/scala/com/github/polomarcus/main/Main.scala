@@ -30,11 +30,10 @@ object Main {
     // Show the first 10 elements - tips : https://spark.apache.org/docs/latest/sql-getting-started.html#creating-dataframes
     newsDatasets.show(10)
 
-    // Enrich the dataset by apply the ClimateService.isClimateRelated function to the title and the description of a news
-    // a assign this value to the "containsWordGlobalWarming" attribute
+    // Enrich the dataset by apply the ClimateService.isClimateRelated function to the title and the description of a news and  assign this value to the "containsWordGlobalWarming" attribute
     val enrichedDataset = NewsService.enrichNewsWithClimateMetadata(newsDatasets)
 
-    // From now, we'll use only the Dataset API as it's more convenient
+    // Now we use only the Dataset API as it's more convenient
     val filteredNewsAboutClimate = NewsService.filterNews(enrichedDataset)
     // Count how many tv news we have in our data source
     val count = NewsService.getNumberOfNews(newsDatasets)
